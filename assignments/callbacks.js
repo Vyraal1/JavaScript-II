@@ -1,18 +1,18 @@
 // Create a higher order function and invoke the callback function to test your work. You have been provided an example of a problem and a solution to see how this works with our items array.  Study both the problem and the solution to figure out the rest of the problems.
 
-const items = ["Pencil", "Notebook", "yo-yo", "Gum"];
+// const items = ["Pencil", "Notebook", "yo-yo", "Gum"];
 
-// GIVEN THIS PROBLEM:
+// // GIVEN THIS PROBLEM:
 
-function firstItem(arr, cb) {
-  // firstItem passes the first item of the given array to the callback function.
-}
+// function firstItem(arr, cb) {
+//   // firstItem passes the first item of the given array to the callback function.
+// }
 
-// SOLUTION:
+// // SOLUTION:
 
-function firstItem(arr, cb) {
-  return cb(arr[0]);
-}
+// function firstItem(arr, cb) {
+//   return cb(arr[0]);
+// }
 
 // NOTES ON THE SOLUTION:
 
@@ -54,6 +54,9 @@ function multiplyNums(x, y, cb) {
 function contains(item, list, cb) {
   return cb(list.includes(item));
 }
+
+contains(5, [1, 2, 3, 4, 6], console.log);
+contains(5, [1, 2, 3, 4, 5], console.log);
 
 /* STRETCH PROBLEM */
 
