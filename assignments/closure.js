@@ -17,42 +17,37 @@ function greet() {
 //      "closes over" the `count` variable. It can "see" it in the parent scope!
 // 3- Return the `counter` function.
 
-// const counterMaker = () => {
-//   let count = 1;
-//   function counter() {
-//     return count++;
-//   }
-//   return counter;
-// };
+const counterMakerBeta = () => {
+  let count = 1;
+  return () => count++;
+};
 // Example usage:
-const myCounter = counterMaker(2);
-console.log(myCounter()); // 1
-console.log(myCounter()); // 2
-console.log(myCounter()); // 1
+const betaCounter = counterMakerBeta();
+for (let i = 0; i < 100; i++) {
+  console.log(betaCounter()); // 1
+}
 
 // ==== Challenge 3: Make `counterMaker` more sophisticated ====
+// Is it better to use arrow notation here? What happens if they wanted to use it earlier?
+// Was told you should use arrow notation if you are returning a value, but if you are performing actions, use function
 function counterMaker(limit) {
   let count = 1;
-  function counter() {
-    return count > limit ? (count = 1) : count++;
-  }
-  return counter;
+  return () => (count > limit ? (count = 1) : count++);
 }
-// It should have a `limit` parameter. Any counters we make with `counterMaker`
-// will refuse to go over the limit, and start back at 1.
+// Example usage:
+const myCounter = counterMaker(40);
+for (let i = 0; i < 100; i++) {
+  console.log(myCounter()); // 1
+}
 
 // ==== Challenge 4: Create a counter function with an object that can increment and decrement ====
+// Return an object that has two methods called `increment` and `decrement`.
+// `increment` should increment a counter variable in closure scope and return it.
+// `decrement` should decrement the counter variable and return it.
 const counterFactory = () => {
   let count = 1;
-  // Return an object that has two methods called `increment` and `decrement`.
   return {
-    // `increment` should increment a counter variable in closure scope and return it.
-    increment: function() {
-      return count++;
-    },
-    // `decrement` should decrement the counter variable and return it.
-    decrement: function() {
-      return count--;
-    }
+    increment: () => count++,
+    decrement: () => count--
   };
 };
