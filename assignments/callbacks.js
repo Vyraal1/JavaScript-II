@@ -23,7 +23,7 @@
 
 // TEST 1 (inlined callback):
 
-firstItem(items, item => console.log(`I love my ${item}!`));
+//firstItem(items, item => console.log(`I love my ${item}!`));
 // "I love my Pencil!"
 
 // TEST 2 (declaring callback before hand):
@@ -32,24 +32,31 @@ function logExorbitantPrice(article) {
   console.log(`this ${article} is worth a million dollars!`);
 }
 
-firstItem(items, logExorbitantPrice);
+//firstItem(items, logExorbitantPrice);
 // "this Pencil is worth a million dollars!"
 
 function getLength(arr, cb) {
-  return cb(arr);
+  return cb(arr.length);
 }
 
+getLength([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], console.log);
+
 function last(arr, cb) {
-  return cb(arr[arr.length]);
+  return cb(arr[arr.length - 1]);
 }
+last([1, 2, 3, 4, 5, 6], console.log);
 
 function sumNums(x, y, cb) {
   return cb(x + y);
 }
 
+sumNums(5, 5, console.log);
+
 function multiplyNums(x, y, cb) {
   return cb(x * y);
 }
+
+multiplyNums(5, 5, console.log);
 
 function contains(item, list, cb) {
   return cb(list.includes(item));
